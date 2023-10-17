@@ -1,0 +1,72 @@
+<!-- inicio.component.html -->
+<div class="container">
+  <mat-tab-group (selectedTabChange)="cambiarPestana($event)">
+    <mat-tab label="Noticias Recientes">
+      <h1>Noticias Recientes</h1>
+      <mat-form-field>
+        <input matInput placeholder="Filtrar noticias" (input)="aplicarFiltro($event)" #filtro>
+      </mat-form-field>  
+    
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Columnas -->
+        <ng-container matColumnDef="imagen">
+          <th mat-header-cell *matHeaderCellDef> Imagen </th>
+          <td mat-cell *matCellDef="let noticia">
+            <img [src]="noticia.image_url" alt="Imagen de la noticia" [style.max-width.px]="100">
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="titulo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Título </th>
+          <td mat-cell *matCellDef="let noticia">{{ noticia.title }}</td>
+        </ng-container>
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let noticia">{{ noticia.summary }}</td>
+        </ng-container>
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+          <td mat-cell *matCellDef="let noticia">{{ formatDate(noticia.published_at) }}</td>
+        </ng-container>
+        <ng-container matColumnDef="favoritos">
+          <th mat-header-cell *matHeaderCellDef> Favoritos </th>
+          <td mat-cell *matCellDef="let noticia">
+            <button mat-icon-button (click)="agregarFavoritos(noticia)">
+              <mat-icon>favorite</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let fila; columns: columnas"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" [showFirstLastButtons]="true" #recentPaginator></mat-paginator>  
+    </mat-tab>
+    
+    <!-- Pestaña de Favoritos -->
+    <mat-tab label="Favoritos">
+      <h1>Mis Noticias Favoritas</h1>
+      <mat-form-field>
+        <input matInput placeholder="Filtrar noticias" (input)="aplicarFiltroFavoritos($event)" #filtroFavoritos>
+      </mat-form-field>
+    
+      <table mat-table [dataSource]="favoritosDataSource" matSort>
+        <!-- Columnas para Noticias Favoritas -->
+        <ng-container matColumnDef="favorito_titulo">
+          <th mat-header-cell *matHeaderCellDef> Título </th>
+          <td mat-cell *matCellDef="let favorito">{{ favorito.titulo }}</td>
+        </ng-container>
+        <ng-container matColumnDef="favorito_descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let favorito">{{ favorito.descripcion }}</td> 
+        </ng-container>
+        <ng-container matColumnDef="favorito_fecha">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+          <td mat-cell *matCellDef="let favorito">{{ formatDate(favorito.fecha) }}</td> 
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnasFavoritos"></tr>
+        <tr mat-row *matRowDef="let favorito; columns: columnasFavoritos"></tr>
+      </table>      
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" [showFirstLastButtons]="true" #favoritesPaginator></mat-paginator>
+    </mat-tab>
+  </mat-tab-group>
+</div>
