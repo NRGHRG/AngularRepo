@@ -64,7 +64,7 @@ export class InicioComponent implements OnInit {
           (response: any) => {
             console.log('Favorito agregado:', response);
             this.mostrarMensaje('Agregado a Favoritos', 'La noticia se ha agregado a tus Favoritos.');
-            // Puedes realizar acciones adicionales aquí, como actualizar la lista de favoritos.
+            // Aqui se puede realizar acciones adicionales, como actualizar la lista de favoritos. CAMBIAR SI LO NECESITO
           },
           (error) => {
             console.error('Error al agregar favorito:', error);
@@ -141,8 +141,9 @@ export class InicioComponent implements OnInit {
     if (event && event.target instanceof HTMLInputElement) {
       const valor = event.target.value;
       this.dataSource.filter = valor.trim().toLowerCase();
-  
-      // Puedes ajustar aún más cómo se realiza el filtrado según tus necesidades.
+
+      // Aqui se puede ajustar aún más cómo se realiza el filtrado según diferentes necesidades. CAMBIAR SI LO NECESITO
+      
     }
   }
 

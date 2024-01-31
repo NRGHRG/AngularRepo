@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { InicioComponent } from './inicio.component'; // Asegúrate de que la importación sea correcta.
+import { InicioComponent } from './inicio.component'; // Asegúrarme de que la importación sea correcta.
 import { CommonModule } from '@angular/common';
-import { InicioRoutingModule } from './inicio-routing.module'; // Si tienes un archivo de rutas para el módulo de inicio.
+import { InicioRoutingModule } from './inicio-routing.module'; // Si es que tengo algún archivo de rutas para el módulo de inicio.
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -18,7 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     InicioComponent,
-    // Otros componentes relacionados con la página de inicio, si los tienes.
+    // Otros componentes relacionados con la página de inicio, AGREGAR SI LO NECESITO
   ],
   imports: [
     CommonModule,

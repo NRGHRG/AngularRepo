@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './inicio/inicio.component'; // Ajusta la ruta a tu estructura de carpetas
 
 const routes: Routes = [
   {
@@ -11,8 +10,6 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'inicio'
   }
-  //{ path: 'noticia/:id', component: NoticiaDetalleComponent },
-  //{ path: 'favoritos', component: FavoritosComponent },
 ];
 
 
